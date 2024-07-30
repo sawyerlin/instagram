@@ -64,18 +64,18 @@ function UserSuggestions() {
           className={`${suggestionsLoading ? 'fixed opacity-0' : ''}`}
           onLoad={() => setSuggestionsLoading(false)}
         >
-          {spotlightUsers.map((spotlightUserDetails) => (
+          {spotlightUsers.filter(x=>x !== undefined).map((spotlightUserDetails) => (
             <div
               key={`${spotlightUserDetails.userId}Spotlight`}
               className="flex items-center justify-between py-2"
             >
               <div className="flex items-center gap-2">
-                {spotlightUserDetails.avatarURL?.length !== 0 ? (
-                  <Link href={`/${spotlightUserDetails.username}`}>
+                {spotlightUserDetails?.avatarURL?.length !== 0 ? (
+                  <Link href={`/${spotlightUserDetails?.username}`}>
                     <a>
                       <Image
                         className="h-8 w-8 cursor-pointer select-none rounded-full object-cover"
-                        src={spotlightUserDetails.avatarURL!}
+                        src={spotlightUserDetails?.avatarURL!}
                         alt="avatar"
                         width="32"
                         height="32"
